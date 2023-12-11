@@ -1,1 +1,1 @@
--keep class jp.co.benesse.dcha.**
+-keep class **
