@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +25,7 @@
                 android:layout_weight="1"
                 android:text="checkPassword"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,8 +41,7 @@
                 android:layout_weight="1"
                 android:text="getDchaState"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -58,8 +57,7 @@
                 android:layout_weight="1"
                 android:text="getInt"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,8 +73,7 @@
                 android:layout_weight="1"
                 android:text="getString"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,8 +89,7 @@
                 android:layout_weight="1"
                 android:text="putInt"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -109,8 +105,7 @@
                 android:layout_weight="1"
                 android:text="putString"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,8 +121,41 @@
                 android:layout_weight="1"
                 android:text="setDchaState"
                 android:textAllCaps="false"
-                android:textSize="14sp"
-                tools:ignore="HardcodedText" />
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp">
+
+            <Button
+                android:id="@+id/btn_enableUnsupportedFunc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="実行不可関数の有効化"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp">
+
+            <Button
+                android:id="@+id/btn_enableNoSuchFunc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="非存在関数の有効化"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

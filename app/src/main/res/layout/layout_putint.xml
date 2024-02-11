@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="40dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    tools:ignore="HardcodedText,TextFields">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +20,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="putInt"
-            android:textSize="26sp"
-            tools:ignore="HardcodedText" />
+            android:textSize="26sp" />
 
         <EditText
             android:id="@+id/putInt_variable"
@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="'bc' から始まる変数"
-            tools:ignore="HardcodedText,TextFields" />
+            android:importantForAutofill="no"
+            android:hint="[bc] から始まる変数" />
 
         <EditText
             android:id="@+id/putInt_value"
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:inputType="number"
             android:hint="値"
-            tools:ignore="HardcodedText" />
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/exec"
@@ -47,8 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="実行"
-            tools:ignore="HardcodedText" />
+            android:text="実行" />
 
     </LinearLayout>
     <LinearLayout
@@ -62,7 +61,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="ホームに戻る"
-            tools:ignore="HardcodedText" />
+            android:text="ホームに戻る" />
     </LinearLayout>
 </LinearLayout>

@@ -3,16 +3,14 @@ plugins {
 }
 
 android {
-    compileSdk 33
-    buildToolsVersion "30.0.3"
+    namespace 'me.s1204.benesse.touch.test'
+    compileSdk 34
 
     defaultConfig {
-        applicationId 'me.s1204.benesse.touch.test'
         minSdk 24
-        //noinspection ExpiredTargetSdkVersion,EditedTargetSdkVersion
-        targetSdk 28
-        versionCode 2
-        versionName "1.0.1"
+        targetSdk 34
+        versionCode 5
+        versionName "1.2.0"
     }
 
     signingConfigs {
@@ -22,21 +20,36 @@ android {
             keyAlias 'android'
             keyPassword 'android'
         }
+        release {
+            storeFile file('release.jks')
+            storePassword System.getenv('STORE_PASSWORD')
+            keyAlias System.getenv('KEY_ALIAS')
+            keyPassword System.getenv('KEY_PASSWORD')
+        }
     }
 
     buildTypes {
         debug {
-            signingConfig signingConfigs.android
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            multiDexEnabled false
             proguardFiles += 'proguard-rules.pro'
+            signingConfig signingConfigs.android
         }
         release {
-            signingConfig signingConfigs.android
             minifyEnabled true
             shrinkResources true
+            multiDexEnabled false
             proguardFiles += 'proguard-rules.pro'
+            if (file('release.jks').exists()) {
+                signingConfig signingConfigs.release
+            }
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 }
+
 dependencies.compileOnly files('libs/BenesseExtension.jar')

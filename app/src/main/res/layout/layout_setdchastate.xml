@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="40dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    tools:ignore="HardcodedText,TextFields">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +20,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:text="setDchaState"
-        android:textSize="26sp"
-        tools:ignore="HardcodedText" />
+        android:textSize="26sp" />
 
     <Button
         android:id="@+id/setDchaState_0"
@@ -28,8 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="0"
-        tools:ignore="HardcodedText" />
+        android:text="0" />
 
     <Button
         android:id="@+id/setDchaState_1"
@@ -37,8 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="1"
-        tools:ignore="HardcodedText" />
+        android:text="1" />
 
     <Button
         android:id="@+id/setDchaState_2"
@@ -46,8 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="2"
-        tools:ignore="HardcodedText" />
+        android:text="2" />
 
     <Button
         android:id="@+id/setDchaState_3"
@@ -55,8 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:text="3"
-        tools:ignore="HardcodedText" />
+        android:text="3" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +65,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="ホームに戻る"
-            tools:ignore="HardcodedText" />
+            android:text="ホームに戻る" />
     </LinearLayout>
 </LinearLayout>
