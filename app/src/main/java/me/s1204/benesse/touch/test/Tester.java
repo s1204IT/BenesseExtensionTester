@@ -112,7 +112,7 @@ public class Tester extends Activity {
             findViewById(R.id.exec).setOnClickListener(view13 -> {
                 EditText variableBox = findViewById(R.id.getInt_variable);
                 String variable = variableBox.getText().toString();
-                if (variable.equals("")) {
+                if (variable.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
@@ -134,7 +134,7 @@ public class Tester extends Activity {
             findViewById(R.id.exec).setOnClickListener(view15 -> {
                 EditText variableBox = findViewById(R.id.getString_variable);
                 String variable = variableBox.getText().toString();
-                if (variable.equals("")) {
+                if (variable.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
@@ -156,7 +156,7 @@ public class Tester extends Activity {
                 EditText putIntValueBox = findViewById(R.id.putInt_value);
                 String variable = putIntBox.getText().toString();
                 String value = putIntValueBox.getText().toString();
-                if (variable.equals("") || value.equals("")) {
+                if (variable.isEmpty() || value.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
@@ -180,7 +180,7 @@ public class Tester extends Activity {
                 EditText putStringValueBox = findViewById(R.id.putString_value);
                 String variable = putStringBox.getText().toString();
                 String value = putStringValueBox.getText().toString();
-                if (variable.equals("") || value.equals("")) {
+                if (variable.isEmpty() || value.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
