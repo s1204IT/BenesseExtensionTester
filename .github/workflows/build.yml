@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/build.yml'
-      - 'app/**'
+      - 'CT?/**'
       - 'gradle/**'
       - '*.gradle'
       - '*.properties'
@@ -44,7 +44,7 @@ jobs:
       - name: Set environments
         run: |
           {
-            echo "version=v$(grep versionName app/build.gradle | awk '{print $2}' | tr -d \")"
+            echo "version=v$(grep versionName CTZ/build.gradle | awk '{print $2}' | tr -d \")"
             echo "commit=$(echo ${{ github.sha }} | cut -c-7)"
             echo "repo=$(echo ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/})"
           } >> $GITHUB_ENV
@@ -78,26 +78,28 @@ jobs:
       - name: Build with Gradle
         run: |
           if [[ "${{ inputs.release }}" == "true" ]]; then
-            echo "${{ secrets.STORE_FILE }}" | base64 -d > app/release.jks
+            echo "${{ secrets.STORE_FILE }}" | base64 -d > CTZ/release.jks
             export STORE_PASSWORD="${{ secrets.STORE_PASSWORD }}"
             export KEY_ALIAS="${{ secrets.KEY_ALIAS }}"
             export KEY_PASSWORD="${{ secrets.KEY_PASSWORD }}"
             ./gradlew aR
-            ./gradlew bR
-            cp -f app/build/outputs/apk/release/app-release.apk ${{ env.repo }}-${{ env.version }}.apk
-            cp -f app/build/outputs/bundle/release/app-release.aab ${{ env.repo }}-${{ env.version }}.aab
+            ./gradlew :CTZ:bR
+            cp -f CT3/build/outputs/apk/release/CT3-release.apk ${{ env.repo }}-CT3-${{ env.version }}.apk
+            cp -f CTZ/build/outputs/apk/release/CTZ-release.apk ${{ env.repo }}-CTZ-${{ env.version }}.apk
+            cp -f CTZ/build/outputs/bundle/release/CTZ-release.aab ${{ env.repo }}-CTZ-${{ env.version }}.aab
           else
             ./gradlew asD
-            ./gradlew bunD
-            cp -f app/build/outputs/apk/debug/app-debug.apk ${{ env.repo }}-${{ env.version }}@${{ env.commit }}.apk
-            cp -f app/build/outputs/bundle/debug/app-debug.aab ${{ env.repo }}-${{ env.version }}@${{ env.commit }}.aab
+            ./gradlew :CTZ:bunD
+            cp -f CT3/build/outputs/apk/debug/CT3-debug.apk ${{ env.repo }}-CT3-${{ env.version }}@${{ env.commit }}.apk
+            cp -f CTZ/build/outputs/apk/debug/CTZ-debug.apk ${{ env.repo }}-CTZ-${{ env.version }}@${{ env.commit }}.apk
+            cp -f CTZ/build/outputs/bundle/debug/CTZ-debug.aab ${{ env.repo }}-CTZ-${{ env.version }}@${{ env.commit }}.aab
           fi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.repo }}(${{ env.version }}@${{ env.commit }})
-          path: ${{ env.repo }}-${{ env.version }}*.a*
+          path: ${{ env.repo }}-CT?-${{ env.version }}*.a*
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -106,4 +108,4 @@ jobs:
           tag_name: ${{ env.version }}
           draft: true
           prerelease: false
-          files: ${{ env.repo }}-${{ env.version }}.apk
+          files: ${{ env.repo }}-CT?-${{ env.version }}.apk

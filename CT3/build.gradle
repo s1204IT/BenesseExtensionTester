@@ -16,13 +16,13 @@ android {
 
     signingConfigs {
         android {
-            storeFile file('android.jks')
+            storeFile file('../CTZ/android.jks')
             storePassword 'android'
             keyAlias 'android'
             keyPassword 'android'
         }
         release {
-            storeFile file('release.jks')
+            storeFile file('../CTZ/release.jks')
             storePassword System.getenv('STORE_PASSWORD')
             keyAlias System.getenv('KEY_ALIAS')
             keyPassword System.getenv('KEY_PASSWORD')
@@ -40,7 +40,7 @@ android {
             shrinkResources true
             multiDexEnabled false
             signingConfig signingConfigs.android
-            if (file('release.jks').exists()) {
+            if (file('../CTZ/release.jks').exists()) {
                 signingConfig signingConfigs.release
             }
         }

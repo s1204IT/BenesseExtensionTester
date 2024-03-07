@@ -7,5 +7,5 @@
 # Gradle Build
 build/
 # Android Studio Signing APK
-/app/debug/
-/app/release/
+/CT?/debug/
+/CT?/release/

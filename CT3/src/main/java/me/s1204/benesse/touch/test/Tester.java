@@ -1,6 +1,5 @@
 package me.s1204.benesse.touch.test;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.BenesseExtension;
@@ -17,10 +16,9 @@ public class Tester extends Activity {
     private static final String CTZ = "TAB-A05-BA1";
 
 
-    @SuppressLint("UnsafeIntentLaunch")
     private void backHome() {
         finish();
-        startActivity(getIntent().addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+        startActivity(new Intent(Intent.ACTION_MAIN).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
     private void makeText(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
@@ -49,32 +47,17 @@ public class Tester extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
 
-        if (Build.MODEL.equals(CT3)) {
-            findViewById(R.id.btn_getInt).setEnabled(false);
-            findViewById(R.id.btn_putInt).setEnabled(false);
-            findViewById(R.id.btn_putString).setEnabled(false);
-            findViewById(R.id.btn_setDchaState).setEnabled(false);
-            findViewById(R.id.btn_enableUnsupportedFunc).setVisibility(View.VISIBLE);
-            findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.VISIBLE);
-        } else if (Build.MODEL.equals(CTX)) {
-            findViewById(R.id.btn_putString).setEnabled(false);
-            findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.VISIBLE);
-        } else if (!Build.MODEL.equals(CTZ)){
+        if (Build.MODEL.equals(CTX) || Build.MODEL.equals(CTZ)) {
+            makeText("チャレンジパッドNeo/Nextでは正常に動作しません\nCTZ版を利用してください");
+        } else if (!Build.MODEL.equals(CT3)){
             makeText("この端末はサポートされていません");
         }
 
-        // CT3/CTX 用
         findViewById(R.id.btn_enableUnsupportedFunc).setOnClickListener(view -> {
             // 実行できない
+            findViewById(R.id.btn_checkPassword).setEnabled(true);
             findViewById(R.id.btn_setDchaState).setEnabled(true);
             findViewById(R.id.btn_enableUnsupportedFunc).setVisibility(View.INVISIBLE);
-        });
-        findViewById(R.id.btn_enableNoSuchFunc).setOnClickListener(view -> {
-            // 存在しない
-            findViewById(R.id.btn_getInt).setEnabled(true);
-            findViewById(R.id.btn_putInt).setEnabled(true);
-            findViewById(R.id.btn_putString).setEnabled(true);
-            findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.INVISIBLE);
         });
 
         // checkPassword
@@ -88,13 +71,29 @@ public class Tester extends Activity {
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
                 } catch (SecurityException e) {
-                    e.printStackTrace();
-                    // CT3 の場合、true だと SecurityException が発生する
-                    makeText("SecurityException が発生しました\nハッシュ値は一致しています");
+                    cannotExec(e);
                 }
             });
             // メニューに戻る
             findViewById(R.id.backHome).setOnClickListener(view12 -> backHome());
+        });
+
+        // checkUsbCam
+        findViewById(R.id.btn_checkUsbCam).setOnClickListener(view -> {
+            try {
+                makeText("checkUsbCam：" + BenesseExtension.checkUsbCam());
+            } catch (NoClassDefFoundError e) {
+                noClassFound(e);
+            }
+        });
+
+        // getBaseDisplaySize
+        findViewById(R.id.btn_getBaseDisplaySize).setOnClickListener(view -> {
+            try {
+                makeText("getBaseDisplaySize：" + BenesseExtension.getBaseDisplaySize());
+            } catch (NoClassDefFoundError e) {
+                noClassFound(e);
+            }
         });
 
         // getDchaState
@@ -106,26 +105,22 @@ public class Tester extends Activity {
             }
         });
 
-        // getInt
-        findViewById(R.id.btn_getInt).setOnClickListener(view -> {
-            setContentView(R.layout.layout_getint);
-            findViewById(R.id.exec).setOnClickListener(view13 -> {
-                EditText variableBox = findViewById(R.id.getInt_variable);
-                String variable = variableBox.getText().toString();
-                if (variable.isEmpty()) {
-                    makeText("値を入力してください");
-                    return;
-                }
-                try {
-                    makeText("実行結果：" + BenesseExtension.getInt(variable));
-                } catch (NoClassDefFoundError e) {
-                    noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
-                }
-            });
-            // メニューに戻る
-            findViewById(R.id.backHome).setOnClickListener(view14 -> backHome());
+        // getInitialDisplaySize
+        findViewById(R.id.btn_getInitialDisplaySize).setOnClickListener(view -> {
+            try {
+                makeText("getInitialDisplaySize：" + BenesseExtension.getInitialDisplaySize());
+            } catch (NoClassDefFoundError e) {
+                noClassFound(e);
+            }
+        });
+
+        // getLcdSize
+        findViewById(R.id.btn_getLcdSize).setOnClickListener(view -> {
+            try {
+                makeText("getLcdSize：" + BenesseExtension.getLcdSize());
+            } catch (NoClassDefFoundError e) {
+                noClassFound(e);
+            }
         });
 
         // getString
@@ -146,54 +141,6 @@ public class Tester extends Activity {
             });
             // メニューに戻る
             findViewById(R.id.backHome).setOnClickListener(view16 -> backHome());
-        });
-
-        // putInt
-        findViewById(R.id.btn_putInt).setOnClickListener(view -> {
-            setContentView(R.layout.layout_putint);
-            findViewById(R.id.exec).setOnClickListener(view17 -> {
-                EditText putIntBox = findViewById(R.id.putInt_variable);
-                EditText putIntValueBox = findViewById(R.id.putInt_value);
-                String variable = putIntBox.getText().toString();
-                String value = putIntValueBox.getText().toString();
-                if (variable.isEmpty() || value.isEmpty()) {
-                    makeText("値を入力してください");
-                    return;
-                }
-                try {
-                    makeText("実行結果：" + BenesseExtension.putInt(variable, Integer.parseInt(value)));
-                } catch (NoClassDefFoundError e) {
-                    noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
-                }
-            });
-            // メニューに戻る
-            findViewById(R.id.backHome).setOnClickListener(view18 -> backHome());
-        });
-
-        // putString
-        findViewById(R.id.btn_putString).setOnClickListener(view -> {
-            setContentView(R.layout.layout_putstring);
-            findViewById(R.id.exec).setOnClickListener(view115 -> {
-                EditText putStringBox = findViewById(R.id.putString_variable);
-                EditText putStringValueBox = findViewById(R.id.putString_value);
-                String variable = putStringBox.getText().toString();
-                String value = putStringValueBox.getText().toString();
-                if (variable.isEmpty() || value.isEmpty()) {
-                    makeText("値を入力してください");
-                    return;
-                }
-                try {
-                    makeText("実行結果：" + BenesseExtension.putString(variable, value));
-                } catch (NoClassDefFoundError e) {
-                    noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
-                }
-            });
-            // メニューに戻る
-            findViewById(R.id.backHome).setOnClickListener(view19 -> backHome());
         });
 
         // setDchaState
@@ -241,6 +188,29 @@ public class Tester extends Activity {
             });
             // メニューに戻る
             findViewById(R.id.backHome).setOnClickListener(view114 -> backHome());
+        });
+
+        // setForcedDisplaySize
+        findViewById(R.id.btn_setForcedDisplaySize).setOnClickListener(view -> {
+            setContentView(R.layout.layout_setforceddisplaysize);
+            findViewById(R.id.exec).setOnClickListener(view15 -> {
+                EditText widthBox = findViewById(R.id.setForcedDisplaySize_width);
+                EditText heightBox = findViewById(R.id.setForcedDisplaySize_height);
+                String width = widthBox.getText().toString();
+                String height = heightBox.getText().toString();
+                if (width.isEmpty() || height.isEmpty()) {
+                    makeText("値を入力してください");
+                }
+                try {
+                    makeText("実行結果：" + BenesseExtension.setForcedDisplaySize(Integer.parseInt(width), Integer.parseInt(height)));
+                } catch (SecurityException e) {
+                    cannotExec(e);
+                } catch (NoClassDefFoundError e) {
+                    noClassFound(e);
+                }
+            });
+            // メニューに戻る
+            findViewById(R.id.backHome).setOnClickListener(view16 -> backHome());
         });
 
     }
