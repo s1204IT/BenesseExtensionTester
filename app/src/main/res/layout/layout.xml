@@ -34,6 +34,38 @@
             android:padding="1dp">
 
             <Button
+                android:id="@+id/btn_checkUsbCam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="checkUsbCam"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp">
+
+            <Button
+                android:id="@+id/btn_getBaseDisplaySize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="getBaseDisplaySize"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp">
+
+            <Button
                 android:id="@+id/btn_getDchaState"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -50,12 +82,44 @@
             android:padding="1dp">
 
             <Button
+                android:id="@+id/btn_getInitialDisplaySize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="getInitialDisplaySize"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp">
+
+            <Button
                 android:id="@+id/btn_getInt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="getInt"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="1dp">
+
+            <Button
+                android:id="@+id/btn_getLcdSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="getLcdSize"
                 android:textAllCaps="false"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -130,15 +194,14 @@
             android:padding="1dp">
 
             <Button
-                android:id="@+id/btn_enableUnsupportedFunc"
+                android:id="@+id/btn_setForcedDisplaySize"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="実行不可関数の有効化"
+                android:text="setForcedDisplaySize"
                 android:textAllCaps="false"
-                android:textSize="16sp"
-                android:visibility="invisible" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,8 +217,7 @@
                 android:layout_weight="1"
                 android:text="非存在関数の有効化"
                 android:textAllCaps="false"
-                android:textSize="16sp"
-                android:visibility="invisible" />
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

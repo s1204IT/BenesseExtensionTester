@@ -9,20 +9,20 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 34
-        versionCode 5
-        versionName "1.2.0"
+        versionCode 6
+        versionName "2.0.0"
         proguardFiles += 'proguard-rules.pro'
     }
 
     signingConfigs {
         android {
-            storeFile file('../CTZ/android.jks')
+            storeFile file('android.jks')
             storePassword 'android'
             keyAlias 'android'
             keyPassword 'android'
         }
         release {
-            storeFile file('../CTZ/release.jks')
+            storeFile file('release.jks')
             storePassword System.getenv('STORE_PASSWORD')
             keyAlias System.getenv('KEY_ALIAS')
             keyPassword System.getenv('KEY_PASSWORD')
@@ -40,7 +40,7 @@ android {
             shrinkResources true
             multiDexEnabled false
             signingConfig signingConfigs.android
-            if (file('../CTZ/release.jks').exists()) {
+            if (file('release.jks').exists()) {
                 signingConfig signingConfigs.release
             }
         }
@@ -52,4 +52,6 @@ android {
     }
 }
 
-dependencies.compileOnly files('libs/BenesseExtension.jar')
+dependencies {
+    compileOnly files('libs/BenesseExtension.jar')
+}
