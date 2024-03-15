@@ -17,12 +17,12 @@ public class Tester extends Activity {
     private static final String CTX = "TAB-A05-BD";
     private static final String CTZ = "TAB-A05-BA1";
 
-
     private void backHome() {
         finish();
         startActivity(new Intent(Intent.ACTION_MAIN)
                 .addCategory(Intent.CATEGORY_DEFAULT)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION).setPackage(getPackageName()));
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                .setPackage(getPackageName()));
     }
 
     private void makeText(String msg) {
@@ -100,8 +100,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // メニューに戻る
@@ -136,8 +134,6 @@ public class Tester extends Activity {
                 makeText("getDchaState：" + BenesseExtension.getDchaState());
             } catch (NoClassDefFoundError e) {
                 noClassFound(e);
-            } catch (NoSuchMethodError e) {
-                noSuchFunc(e);
             }
         });
 
@@ -201,8 +197,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // メニューに戻る
@@ -268,8 +262,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // setDchaState(1)
@@ -280,8 +272,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // setDchaState(2)
@@ -292,8 +282,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // setDchaState(3)
@@ -304,8 +292,6 @@ public class Tester extends Activity {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
-                } catch (NoSuchMethodError e) {
-                    noSuchFunc(e);
                 }
             });
             // メニューに戻る
