@@ -28,9 +28,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:inputType="text"
+            android:hint="[bc] から始まる変数"
             android:importantForAutofill="no"
-            android:hint="[bc] から始まる変数" />
+            android:inputType="text"
+            android:text="bc_password_hit" />
 
         <Button
             android:id="@+id/exec"

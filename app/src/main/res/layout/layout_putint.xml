@@ -28,8 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:hint="[bc] から始まる変数"
             android:importantForAutofill="no"
-            android:hint="[bc] から始まる変数" />
+            android:text="bc_password_hit" />
 
         <EditText
             android:id="@+id/putInt_value"
@@ -37,9 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:inputType="number"
             android:hint="値"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:text="1" />
 
         <Button
             android:id="@+id/exec"
