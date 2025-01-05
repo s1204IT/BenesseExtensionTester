@@ -22,26 +22,23 @@
             android:text="putInt"
             android:textSize="26sp" />
 
-        <EditText
-            android:id="@+id/putInt_variable"
+        <Spinner
+            android:id="@+id/putInt_var"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="[bc] から始まる変数"
-            android:importantForAutofill="no"
-            android:text="bc_password_hit" />
+            android:entries="@array/put_int" />
 
         <EditText
-            android:id="@+id/putInt_value"
+            android:id="@+id/putInt_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:hint="値"
             android:importantForAutofill="no"
-            android:inputType="number"
-            android:text="1" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/exec"

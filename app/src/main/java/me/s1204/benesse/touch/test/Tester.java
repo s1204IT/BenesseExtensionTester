@@ -9,8 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+/** @noinspection CallToPrintStackTrace*/
 public class Tester extends Activity {
 
     private static final String CT3 = "TAB-A03-BR3";
@@ -29,22 +33,19 @@ public class Tester extends Activity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    private void noClassFound(NoClassDefFoundError e) {
-        //noinspection CallToPrintStackTrace
+    private void noClassFound(@NonNull NoClassDefFoundError e) {
         e.printStackTrace();
         makeText("BenesseExtension が存在しません");
         finishAndRemoveTask();
     }
 
-    private void cannotExec(SecurityException e) {
-        //noinspection CallToPrintStackTrace
+    private void cannotExec(@NonNull SecurityException e) {
         e.printStackTrace();
         makeText("関数の実行に失敗しました");
         //backHome();
     }
 
-    private void noSuchFunc(NoSuchMethodError e) {
-        //noinspection CallToPrintStackTrace
+    private void noSuchFunc(@NonNull NoSuchMethodError e) {
         e.printStackTrace();
         makeText("関数が存在しません");
         //backHome();
@@ -88,7 +89,7 @@ public class Tester extends Activity {
             findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.INVISIBLE);
         });
 
-        // checkPassword
+        // checkPassword(String)
         findViewById(R.id.btn_checkPassword).setOnClickListener(view -> {
             setContentView(R.layout.layout_checkpassword);
             findViewById(R.id.exec).setOnClickListener(view1 -> {
@@ -148,18 +149,18 @@ public class Tester extends Activity {
             }
         });
 
-        // getInt
+        // getInt(String)
         findViewById(R.id.btn_getInt).setOnClickListener(view -> {
             setContentView(R.layout.layout_getint);
             findViewById(R.id.exec).setOnClickListener(view13 -> {
-                EditText variableBox = findViewById(R.id.getInt_variable);
-                String variable = variableBox.getText().toString();
-                if (variable.isEmpty()) {
+                Spinner varBox = findViewById(R.id.getInt_var);
+                String var = varBox.toString();
+                if (var.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
                 try {
-                    makeText("実行結果：" + BenesseExtension.getInt(variable));
+                    makeText("実行結果：" + BenesseExtension.getInt(var));
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
                 } catch (NoSuchMethodError e) {
@@ -181,18 +182,18 @@ public class Tester extends Activity {
             }
         });
 
-        // getString
+        // getString(String)
         findViewById(R.id.btn_getString).setOnClickListener(view -> {
             setContentView(R.layout.layout_getstring);
             findViewById(R.id.exec).setOnClickListener(view15 -> {
-                EditText variableBox = findViewById(R.id.getString_variable);
-                String variable = variableBox.getText().toString();
-                if (variable.isEmpty()) {
+                Spinner varBox = findViewById(R.id.getString_var);
+                String var = varBox.toString();
+                if (var.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
                 try {
-                    makeText("実行結果：" + BenesseExtension.getString(variable));
+                    makeText("実行結果：" + BenesseExtension.getString(var));
                 } catch (SecurityException e) {
                     cannotExec(e);
                 } catch (NoClassDefFoundError e) {
@@ -203,20 +204,20 @@ public class Tester extends Activity {
             findViewById(R.id.backHome).setOnClickListener(view16 -> backHome());
         });
 
-        // putInt
+        // putInt(String, int)
         findViewById(R.id.btn_putInt).setOnClickListener(view -> {
             setContentView(R.layout.layout_putint);
             findViewById(R.id.exec).setOnClickListener(view17 -> {
-                EditText putIntBox = findViewById(R.id.putInt_variable);
-                EditText putIntValueBox = findViewById(R.id.putInt_value);
-                String variable = putIntBox.getText().toString();
-                String value = putIntValueBox.getText().toString();
-                if (variable.isEmpty() || value.isEmpty()) {
+                Spinner varBox = findViewById(R.id.putInt_var);
+                EditText valBox = findViewById(R.id.putInt_val);
+                String var = varBox.toString();
+                String val = valBox.getText().toString();
+                if (var.isEmpty() || val.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
                 try {
-                    makeText("実行結果：" + BenesseExtension.putInt(variable, Integer.parseInt(value)));
+                    makeText("実行結果：" + BenesseExtension.putInt(var, Integer.parseInt(val)));
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
                 } catch (NoSuchMethodError e) {
@@ -227,20 +228,20 @@ public class Tester extends Activity {
             findViewById(R.id.backHome).setOnClickListener(view18 -> backHome());
         });
 
-        // putString
+        // putString(String, String)
         findViewById(R.id.btn_putString).setOnClickListener(view -> {
             setContentView(R.layout.layout_putstring);
             findViewById(R.id.exec).setOnClickListener(view115 -> {
-                EditText putStringBox = findViewById(R.id.putString_variable);
-                EditText putStringValueBox = findViewById(R.id.putString_value);
-                String variable = putStringBox.getText().toString();
-                String value = putStringValueBox.getText().toString();
-                if (variable.isEmpty() || value.isEmpty()) {
+                Spinner varBox = findViewById(R.id.putString_var);
+                EditText valBox = findViewById(R.id.putString_val);
+                String var = varBox.toString();
+                String val = valBox.getText().toString();
+                if (var.isEmpty() || val.isEmpty()) {
                     makeText("値を入力してください");
                     return;
                 }
                 try {
-                    makeText("実行結果：" + BenesseExtension.putString(variable, value));
+                    makeText("実行結果：" + BenesseExtension.putString(var, val));
                 } catch (NoClassDefFoundError e) {
                     noClassFound(e);
                 } catch (NoSuchMethodError e) {
@@ -251,7 +252,7 @@ public class Tester extends Activity {
             findViewById(R.id.backHome).setOnClickListener(view19 -> backHome());
         });
 
-        // setDchaState
+        // setDchaState(int)
         findViewById(R.id.btn_setDchaState).setOnClickListener(view -> {
             setContentView(R.layout.layout_setdchastate);
             // setDchaState(0)
@@ -298,7 +299,7 @@ public class Tester extends Activity {
             findViewById(R.id.backHome).setOnClickListener(view114 -> backHome());
         });
 
-        // setForcedDisplaySize
+        // setForcedDisplaySize(int, int)
         findViewById(R.id.btn_setForcedDisplaySize).setOnClickListener(view -> {
             setContentView(R.layout.layout_setforceddisplaysize);
             findViewById(R.id.exec).setOnClickListener(view15 -> {

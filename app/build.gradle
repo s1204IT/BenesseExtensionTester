@@ -3,15 +3,16 @@ plugins {
 }
 
 android {
-    namespace 'me.s1204.benesse.touch.test'
-    compileSdk 34
+    namespace = 'me.s1204.benesse.touch.test'
+    compileSdk = 35
 
     defaultConfig {
-        minSdk 24
-        targetSdk 34
-        versionCode 7
-        versionName "2.0.1"
+        minSdk = 24
+        targetSdk = 35
+        versionCode = 8
+        versionName = "2.1.0"
         proguardFiles += 'proguard-rules.pro'
+        multiDexEnabled = false
     }
 
     signingConfigs {
@@ -21,34 +22,25 @@ android {
             keyAlias 'android'
             keyPassword 'android'
         }
-        release {
-            storeFile file('release.jks')
-            storePassword System.getenv('STORE_PASSWORD')
-            keyAlias System.getenv('KEY_ALIAS')
-            keyPassword System.getenv('KEY_PASSWORD')
-        }
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-            multiDexEnabled false
-            signingConfig signingConfigs.android
+        configureEach {
+            signingConfig = signingConfigs.android
         }
         release {
-            minifyEnabled true
-            shrinkResources true
-            multiDexEnabled false
-            signingConfig signingConfigs.android
-            if (file('release.jks').exists()) {
-                signingConfig signingConfigs.release
-            }
+            minifyEnabled = true
+            shrinkResources = true
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    lintOptions {
+        ignore 'Deprecated', 'DiscouragedApi', 'ProtectedPermissions'
     }
 }
 

@@ -22,22 +22,21 @@
             android:text="putString"
             android:textSize="26sp" />
 
-        <EditText
-            android:id="@+id/putString_variable"
+        <Spinner
+            android:id="@+id/putString_var"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:importantForAutofill="no"
-            android:hint="[bc] から始まる変数" />
+            android:entries="@array/put_string" />
 
         <EditText
-            android:id="@+id/putString_value"
+            android:id="@+id/putString_val"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="値"
+            android:hint="ファイルパス"
             android:importantForAutofill="no" />
 
         <Button

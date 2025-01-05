@@ -22,15 +22,13 @@
             android:text="getString"
             android:textSize="26sp" />
 
-        <EditText
-            android:id="@+id/getString_variable"
+        <Spinner
+            android:id="@+id/getString_var"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="[bc] から始まる変数"
-            android:importantForAutofill="no"
-            android:text="bc:mac_address" />
+            android:entries="@array/get_string" />
 
         <Button
             android:id="@+id/exec"

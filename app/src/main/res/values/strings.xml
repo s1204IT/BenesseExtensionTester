@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="get_int">
+        <item>bc:compatscreen</item>
+        <item>bc:nightmode:active</item>
+        <item>bc:nightcolor:max</item>
+        <item>bc:nightcolor:min</item>
+        <item>bc:nightcolor:current</item>
+        <item>bc_password_hit</item>
+        <item>bc:pen:battery</item>
+        <item>bc:touchpanel:palmreject:size</item>
+    </string-array>
+    <string-array name="put_int">
+        <item>bc:compatscreen</item>
+        <item>bc:nightmode:active</item>
+        <item>bc:nightcolor:current</item>
+        <item>bc_password_hit</item>
+        <item>bc:touchpanel:palmreject:size</item>
+    </string-array>
+    <string-array name="get_string">
+        <item>bc:mac_address</item>
+        <item>bc:serial_no</item>
+        <item>bc:touchpanel:fw_version</item>
+        <item>bc:digitizer:fw_version</item>
+        <item>bc:touchpanel:nvt:fw_version</item>
+        <item>bc:touchpanel:fts:fw_version</item>
+        <item>bc:touchpanel:lcd_type</item>
+    </string-array>
+    <string-array name="put_string">
+        <item>bc:touchpanel:fw_update</item>
+        <item>bc:digitizer:fw_update</item>
+        <item>bc:touchpanel:nvt:fw_update</item>
+    </string-array>
+</resources>

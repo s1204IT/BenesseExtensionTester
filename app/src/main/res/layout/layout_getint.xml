@@ -22,16 +22,13 @@
             android:text="getInt"
             android:textSize="26sp" />
 
-        <EditText
-            android:id="@+id/getInt_variable"
+        <Spinner
+            android:id="@+id/getInt_var"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:hint="[bc] から始まる変数"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:text="bc_password_hit" />
+            android:entries="@array/get_int" />
 
         <Button
             android:id="@+id/exec"
