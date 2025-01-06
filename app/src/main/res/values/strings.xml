@@ -30,5 +30,6 @@
         <item>bc:touchpanel:fw_update</item>
         <item>bc:digitizer:fw_update</item>
         <item>bc:touchpanel:nvt:fw_update</item>
+        <item>bc:touchpanel:fts:fw_update</item>
     </string-array>
 </resources>
