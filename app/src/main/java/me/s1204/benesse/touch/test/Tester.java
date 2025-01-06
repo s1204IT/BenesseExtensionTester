@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.BenesseExtension;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -75,6 +76,9 @@ public class Tester extends Activity {
                 findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.INVISIBLE);
                 break;
         }
+
+        findViewById(R.id.btn_openSettings).setOnClickListener(view -> startActivity(new Intent(Intent.ACTION_MAIN).setClassName("com.android.settings", "com.android.settings.Settings")));
+        findViewById(R.id.btn_openDevOpts).setOnClickListener(view -> startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS)));
 
         findViewById(R.id.btn_enableNoSuchFunc).setOnClickListener(view -> {
             // 存在しない
@@ -154,7 +158,7 @@ public class Tester extends Activity {
             setContentView(R.layout.layout_getint);
             findViewById(R.id.exec).setOnClickListener(view13 -> {
                 Spinner varBox = findViewById(R.id.getInt_var);
-                String var = varBox.toString();
+                String var = varBox.getSelectedItem().toString();
                 if (var.isEmpty()) {
                     makeText("値を入力してください");
                     return;
@@ -187,7 +191,7 @@ public class Tester extends Activity {
             setContentView(R.layout.layout_getstring);
             findViewById(R.id.exec).setOnClickListener(view15 -> {
                 Spinner varBox = findViewById(R.id.getString_var);
-                String var = varBox.toString();
+                String var = varBox.getSelectedItem().toString();
                 if (var.isEmpty()) {
                     makeText("値を入力してください");
                     return;
@@ -210,7 +214,7 @@ public class Tester extends Activity {
             findViewById(R.id.exec).setOnClickListener(view17 -> {
                 Spinner varBox = findViewById(R.id.putInt_var);
                 EditText valBox = findViewById(R.id.putInt_val);
-                String var = varBox.toString();
+                String var = varBox.getSelectedItem().toString();
                 String val = valBox.getText().toString();
                 if (var.isEmpty() || val.isEmpty()) {
                     makeText("値を入力してください");
@@ -234,7 +238,7 @@ public class Tester extends Activity {
             findViewById(R.id.exec).setOnClickListener(view115 -> {
                 Spinner varBox = findViewById(R.id.putString_var);
                 EditText valBox = findViewById(R.id.putString_val);
-                String var = varBox.toString();
+                String var = varBox.getSelectedItem().toString();
                 String val = valBox.getText().toString();
                 if (var.isEmpty() || val.isEmpty()) {
                     makeText("値を入力してください");
