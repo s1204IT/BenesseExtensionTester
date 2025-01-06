@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="特定変数の値を返します。\n・bc:compatscreen：画面サイズを変更\n　　・0: [1920, 1200]\n　　・1: [1024, 768]\n　　・2: [1280, 800]\n・bc:nightmode:active：読書灯の有効状態\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：checkPassword の実行に１回でも成功したかどうか。再起動時に ADB を自動で無効化するかどうかの判断に用いられる。\n・bc:pen:battery\n・bc:touchpanel:palmreject:size"
+                android:text="特定変数の値を返します。\n・bc:compatscreen：画面サイズを変更\n　　・0: [1920, 1200]\n　　・1: [1024, 768]\n　　・2: [1280, 800]\n・bc:nightmode:active：読書灯の有効状態\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：再起動時に ADB を自動で無効化するかどうかの判断に用いられる。\n・bc:pen:battery\n・bc:touchpanel:palmreject:size"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -301,7 +301,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
-            android:text="boolean putInt(String name, int, value)"
+            android:text="boolean putInt(String name, int value)"
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
