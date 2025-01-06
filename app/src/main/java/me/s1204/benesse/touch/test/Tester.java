@@ -8,6 +8,8 @@ import android.os.BenesseExtension;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -76,9 +78,6 @@ public class Tester extends Activity {
                 findViewById(R.id.btn_enableNoSuchFunc).setVisibility(View.INVISIBLE);
                 break;
         }
-
-        findViewById(R.id.btn_openSettings).setOnClickListener(view -> startActivity(new Intent(Intent.ACTION_MAIN).setClassName("com.android.settings", "com.android.settings.Settings")));
-        findViewById(R.id.btn_openDevOpts).setOnClickListener(view -> startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS)));
 
         findViewById(R.id.btn_enableNoSuchFunc).setOnClickListener(view -> {
             // 存在しない
@@ -339,5 +338,27 @@ public class Tester extends Activity {
     @Deprecated
     public void onBackPressed() {
         backHome();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_about) {
+            setContentView(R.layout.about);
+            return true;
+        } else if (itemId == R.id.menu_settings) {
+            startActivity(new Intent(Intent.ACTION_MAIN).setClassName("com.android.settings", "com.android.settings.Settings"));
+            return true;
+        } else if (itemId == R.id.menu_devopts) {
+            startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

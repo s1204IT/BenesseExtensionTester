@@ -10,13 +10,6 @@
         <item>bc:pen:battery</item>
         <item>bc:touchpanel:palmreject:size</item>
     </string-array>
-    <string-array name="put_int">
-        <item>bc:compatscreen</item>
-        <item>bc:nightmode:active</item>
-        <item>bc:nightcolor:current</item>
-        <item>bc_password_hit</item>
-        <item>bc:touchpanel:palmreject:size</item>
-    </string-array>
     <string-array name="get_string">
         <item>bc:mac_address</item>
         <item>bc:serial_no</item>
@@ -25,6 +18,13 @@
         <item>bc:touchpanel:nvt:fw_version</item>
         <item>bc:touchpanel:fts:fw_version</item>
         <item>bc:touchpanel:lcd_type</item>
+    </string-array>
+    <string-array name="put_int">
+        <item>bc:compatscreen</item>
+        <item>bc:nightmode:active</item>
+        <item>bc:nightcolor:current</item>
+        <item>bc_password_hit</item>
+        <item>bc:touchpanel:palmreject:size</item>
     </string-array>
     <string-array name="put_string">
         <item>bc:touchpanel:fw_update</item>
