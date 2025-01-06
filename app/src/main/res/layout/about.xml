@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="特定変数の値を返します。\n・bc:compatscreen：画面サイズを変更\n　　・0: [1920, 1200]\n　　・1: [1280, 800]\n　　・2: [1024, 768]\n・bc:nightmode:active：読書灯の有効状態\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：checkPassword の実行に１回でも成功したかどうか。再起動時に ADB を自動で無効化するかどうかの判断に用いられる。\n・bc:pen:battery\n・bc:touchpanel:palmreject:size"
+                android:text="特定変数の値を返します。\n・bc:compatscreen：画面サイズを変更\n　　・0: [1920, 1200]\n　　・1: [1024, 768]\n　　・2: [1280, 800]\n・bc:nightmode:active：読書灯の有効状態\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：checkPassword の実行に１回でも成功したかどうか。再起動時に ADB を自動で無効化するかどうかの判断に用いられる。\n・bc:pen:battery\n・bc:touchpanel:palmreject:size"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -353,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="タッチパネルファームウェアアップデートに使用。\n２つ目の引数にファイルを指定。\n・bc:touchpanel:fw_update\n・bc:digitizer:fw_update\n・bc:touchpanel:nvt:fw_update"
+                android:text="タッチパネルファームウェアアップデートに使用。\n２つ目の引数にファイルを指定。\n・bc:touchpanel:fw_update\n・bc:digitizer:fw_update\n・bc:touchpanel:nvt:fw_update\n・bc:touchpanel:fts:fw_update：※処理が実装されていない"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
