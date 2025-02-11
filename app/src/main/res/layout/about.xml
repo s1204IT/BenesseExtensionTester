@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="System 変数テーブルの dcha_state の値を返します。"
+                android:text="System ネームスペースの dcha_state の値を返します。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -388,7 +388,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="System 変数テーブルの dcha_state の値を設定。"
+                android:text="System ネームスペースの dcha_state の値を設定。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
