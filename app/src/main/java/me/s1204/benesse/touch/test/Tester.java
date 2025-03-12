@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-/** @noinspection CallToPrintStackTrace*/
 public class Tester extends Activity {
 
     private static final String CT3 = "TAB-A03-BR3";
@@ -36,20 +35,17 @@ public class Tester extends Activity {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
-    private void noClassFound(@NonNull NoClassDefFoundError e) {
-        e.printStackTrace();
+    private void noClassFound(@NonNull NoClassDefFoundError ignored) {
         makeText("BenesseExtension が存在しません");
         finishAndRemoveTask();
     }
 
-    private void cannotExec(@NonNull SecurityException e) {
-        e.printStackTrace();
+    private void cannotExec(@NonNull SecurityException ignored) {
         makeText("関数の実行に失敗しました");
         //backHome();
     }
 
-    private void noSuchFunc(@NonNull NoSuchMethodError e) {
-        e.printStackTrace();
+    private void noSuchFunc(@NonNull NoSuchMethodError ignored) {
         makeText("関数が存在しません");
         //backHome();
     }
