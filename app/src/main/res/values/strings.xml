@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">BenesseExtension Tester</string>
     <string name="about">About BenesseExtension</string>
+    <string name="sts_name">StsExtension Tester</string>
     <string name="shortcut_label">詳細</string>
     <string-array name="get_int">
         <item>bc:compatscreen</item>

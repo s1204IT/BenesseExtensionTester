@@ -2,6 +2,7 @@ package me.s1204.benesse.touch.test;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.BenesseExtension;
@@ -32,7 +33,7 @@ public class Tester extends Activity {
     }
 
     private void makeText(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     private void noClassFound(@NonNull NoClassDefFoundError ignored) {
@@ -333,17 +334,20 @@ public class Tester extends Activity {
     @Override
     @Deprecated
     public void onBackPressed() {
+        super.onBackPressed();
         backHome();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
         int itemId = item.getItemId();
         if (itemId == R.id.menu_about) {
             setContentView(R.layout.about);
@@ -353,6 +357,10 @@ public class Tester extends Activity {
             return true;
         } else if (itemId == R.id.menu_devopts) {
             startActivity(new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
+            return true;
+        } else if (itemId == R.id.menu_enable) {
+            getPackageManager().setComponentEnabledSetting(new ComponentName(this, StsTester.class.getName()), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+            startActivity(new Intent(Intent.ACTION_MAIN).setClassName(this, StsTester.class.getName()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             return true;
         }
         return super.onOptionsItemSelected(item);

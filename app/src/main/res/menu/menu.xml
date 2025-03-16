@@ -12,4 +12,9 @@
         android:id="@+id/menu_devopts"
         android:showAsAction="never"
         android:title="開発者向けオプション" />
+    <item
+        android:id="@+id/menu_enable"
+        android:showAsAction="never"
+        android:title="StsExtension" />
+
 </menu>
