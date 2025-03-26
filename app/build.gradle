@@ -46,5 +46,4 @@ android {
 
 dependencies {
     compileOnly 'com.github.s1204IT:BenesseExtension:1.0.0'
-    implementation 'androidx.annotation:annotation:1.9.1'
 }

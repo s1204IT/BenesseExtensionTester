@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Benesse が指定したパスワードと一致しているか確認する関数。\n/factory/dcha_hash が存在する場合、そちらがパスワードの比較対象として優先される。\n一致した場合は true を返し、再起動時に ADB が自動で無効になるフラグを無効にできる。\n尚、このフラグは putInt や、ADB から直接設定可能。"
+                android:text="予め指定されているパスワードと一致するか確認する関数。\n/factory/dcha_hash が存在する場合、そちらがパスワードの比較対象として優先される。\n一致した場合は true を返し、再起動時に ADB が自動で無効になるフラグを無効にできる。\n尚、このフラグは putInt や、ADB から直接設定可能。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="USB にカメラが接続されているかどうかを真偽値で返します。\n/dev/video0 が存在するかどうかで判断します。"
+                android:text="USB にカメラが接続されているかどうかを真偽値で返す。\n/dev/video0 が存在するかどうかで判断する。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="現在のディスプレイのサイズを [width, height] で返します。"
+                android:text="現在のディスプレイのサイズを [width, height] で返す。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="System ネームスペースの dcha_state の値を返します。"
+                android:text="System ネームスペースの dcha_state の値を返す。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="ディスプレイの物理的なサイズを [width, height] で返します。"
+                android:text="ディスプレイの物理的なサイズを [width, height] で返す。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="特定変数の値を返します。\n・bc:compatscreen：画面サイズを変更\n　　・0: [1920, 1200]\n　　・1: [1024, 768]\n　　・2: [1280, 800]\n・bc:nightmode:active：読書灯の有効状態\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：再起動時に ADB を自動で無効化するかどうかの判断に用いられる。\n・bc:pen:battery\n・bc:touchpanel:palmreject:size"
+                android:text="特定変数の値を返す。\n・bc:compatscreen：画面サイズを変更\n　　・0：[1920, 1200]\n　　・1：[1024, 768]\n　　・2：[1280, 800]\n・bc:nightmode:active：読書灯の有効状態 \n　　・0 ：無効\n　　・1：有効\n・bc:nightcolor:max：読書灯の最大の輝度\n・bc:nightcolor:min：読書灯の最低の輝度\n・bc:nightcolor:current：読書灯の現在の輝度\n・bc_password_hit：端末起動時に ADB を自動で無効化するかどうか\n　　・1 以外：無効化\n　　・1：現在の状態を維持\n・bc:pen:battery：Next のペンの電池残量\n・bc:touchpanel:palmreject:size"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -248,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="getInitialDisplaySize を呼び出します。"
+                android:text="getInitialDisplaySize を呼び出す。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -283,7 +283,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="特定変数の値を返します。\n・bc:mac_address：Wi-Fi の MAC アドレス\n・bc:serial_no：製造番号\n・bc:touchpanel:fw_version\n・bc:digitizer:fw_version\n・bc:touchpanel:nvt:fw_version\n・bc:touchpanel:fts:fw_version\n・bc:touchpanel:lcd_type"
+                android:text="特定変数の値を返す。\n・bc:mac_address：Wi-Fi の MAC アドレス\n・bc:serial_no：製造番号\n・bc:touchpanel:fw_version\n・bc:digitizer:fw_version\n・bc:touchpanel:nvt:fw_version\n・bc:touchpanel:fts:fw_version\n・bc:touchpanel:lcd_type"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -318,7 +318,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="特定変数の値を設定します。\n・bc:compatscreen\n・bc:nightmode:active\n・bc:nightcolor:current\n・bc_password_hit\n・bc:touchpanel:palmreject:size"
+                android:text="特定変数の値の設定または処理を実行。\n・bc:compatscreen\n・bc:nightmode:active\n・bc:nightcolor:current\n・bc_password_hit\n・bc:touchpanel:palmreject:size"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -423,7 +423,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="画面の解像度を強制的に設定します。\nこの関数を実行するアプリに、WRITE_SECURE_SETTINGS の権限の付与が必要です。"
+                android:text="画面の解像度を強制的に設定します。\nこの関数を実行するアプリに、WRITE_SECURE_SETTINGS の権限の付与が必要。"
                 android:textColor="#000000"
                 android:textSize="16sp" />
         </LinearLayout>

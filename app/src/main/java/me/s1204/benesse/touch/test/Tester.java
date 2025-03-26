@@ -13,9 +13,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.Arrays;
 
 public class Tester extends Activity implements View.OnClickListener {
@@ -64,7 +61,7 @@ public class Tester extends Activity implements View.OnClickListener {
     };
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout);
         switch (Build.MODEL) {
@@ -84,7 +81,7 @@ public class Tester extends Activity implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(@NonNull final View v) {
+    public void onClick(final View v) {
         final int resId = v.getId();
         try {
             if (resId == R.id.backHome) {
@@ -176,8 +173,9 @@ public class Tester extends Activity implements View.OnClickListener {
         return true;
     }
 
+    /** @noinspection NullableProblems*/
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
         int itemId = item.getItemId();
         if (itemId == R.id.menu_about) {
