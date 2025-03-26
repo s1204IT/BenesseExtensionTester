@@ -120,15 +120,13 @@ public class Tester extends Activity implements View.OnClickListener {
                 changeLayout(R.layout.layout_putint, R.id.exec_putInt);
             } else if (resId == R.id.exec_putInt) {
                 String name = ((Spinner) findViewById(R.id.name_putInt)).getSelectedItem().toString();
-                // TODO: NumberFormatException のバグ修正
-                String value = findViewById(R.id.value_putInt).toString().trim();
-                makeText(value);
-                //makeText(value.isEmpty() ? "値を入力してください" : "putInt：" + BenesseExtension.putInt(name, Integer.parseInt(value)));
+                String value = ((EditText) findViewById(R.id.value_putInt)).getText().toString();
+                makeText(value.isEmpty() ? "値を入力してください" : "putInt：" + BenesseExtension.putInt(name, Integer.parseInt(value)));
             } else if (resId == R.id.btn_putString) {
                 changeLayout(R.layout.layout_putstring, R.id.exec_putString);
             } else if (resId == R.id.exec_putString) {
                 String name = ((Spinner) findViewById(R.id.name_putString)).getSelectedItem().toString();
-                String value = (findViewById(R.id.value_putString)).toString();
+                String value = ((EditText) (findViewById(R.id.value_putString))).getText().toString();
                 makeText(value.isEmpty() ? "値を入力してください" : "putString：" + BenesseExtension.putString(name, value));
             } else if (resId == R.id.btn_setDchaState) {
                 changeLayout(R.layout.layout_setdchastate, R.id.setDchaState_0);
@@ -156,8 +154,6 @@ public class Tester extends Activity implements View.OnClickListener {
             makeText("関数が存在しません");
         } catch (SecurityException ignored) {
             makeText("関数の実行に失敗しました");
-        } catch (NumberFormatException ignored) {
-            makeText("数値のフォーマットが一致しません");
         }
     }
 
