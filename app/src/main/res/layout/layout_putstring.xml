@@ -23,7 +23,7 @@
             android:textSize="26sp" />
 
         <Spinner
-            android:id="@+id/putString_var"
+            android:id="@+id/name_putString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -31,7 +31,7 @@
             android:entries="@array/put_string" />
 
         <EditText
-            android:id="@+id/putString_val"
+            android:id="@+id/value_putString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -40,7 +40,7 @@
             android:importantForAutofill="no" />
 
         <Button
-            android:id="@+id/exec"
+            android:id="@+id/exec_putString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

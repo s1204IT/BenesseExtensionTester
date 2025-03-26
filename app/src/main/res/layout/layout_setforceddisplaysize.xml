@@ -21,27 +21,29 @@
             android:textSize="26sp" />
 
         <EditText
-            android:id="@+id/setForcedDisplaySize_width"
+            android:id="@+id/width"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:autofillHints="1280"
             android:hint="横"
             android:inputType="number"
             android:text="1280" />
 
         <EditText
-            android:id="@+id/setForcedDisplaySize_height"
+            android:id="@+id/height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:autofillHints="800"
             android:hint="縦"
             android:inputType="number"
             android:text="800" />
 
         <Button
-            android:id="@+id/exec"
+            android:id="@+id/exec_setForcedDisplaySize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -56,7 +58,7 @@
 
         <Button
             android:id="@+id/backHome"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"

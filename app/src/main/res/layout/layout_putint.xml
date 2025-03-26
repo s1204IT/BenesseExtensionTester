@@ -23,7 +23,7 @@
             android:textSize="26sp" />
 
         <Spinner
-            android:id="@+id/putInt_var"
+            android:id="@+id/name_putInt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -31,17 +31,17 @@
             android:entries="@array/put_int" />
 
         <EditText
-            android:id="@+id/putInt_val"
+            android:id="@+id/value_putInt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:hint="値"
             android:importantForAutofill="no"
-            android:inputType="number" />
+            android:inputType="numberSigned" />
 
         <Button
-            android:id="@+id/exec"
+            android:id="@+id/exec_putInt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

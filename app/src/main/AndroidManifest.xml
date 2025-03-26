@@ -31,19 +31,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".StsTester"
-            android:enabled="false"
-            android:exported="true"
-            android:icon="@drawable/ic_launcher_sts"
-            android:label="@string/sts_name"
-            android:launchMode="singleInstance">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
     </application>
 
 </manifest>

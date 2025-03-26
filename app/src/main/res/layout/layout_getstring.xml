@@ -23,7 +23,7 @@
             android:textSize="26sp" />
 
         <Spinner
-            android:id="@+id/getString_var"
+            android:id="@+id/name_getString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -31,7 +31,7 @@
             android:entries="@array/get_string" />
 
         <Button
-            android:id="@+id/exec"
+            android:id="@+id/exec_getString"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
