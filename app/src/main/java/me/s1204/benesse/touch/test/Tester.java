@@ -71,7 +71,6 @@ public class Tester extends Activity implements View.OnClickListener {
             case CTX:
             case CTZ:
                 for (int resId : NOFUNC_CTX) findViewById(resId).setEnabled(false);
-                if (Build.MODEL.equals(CTX)) findViewById(R.id.btn_putString).setEnabled(false);
                 break;
             default:
                 makeText("この端末はサポートされていません");
