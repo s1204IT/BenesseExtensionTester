@@ -25,10 +25,22 @@ public class Tester extends Activity implements View.OnClickListener {
         runOnUiThread(() -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
     }
 
+    private void setOnClickListener(int resId) {
+        findViewById(resId).setOnClickListener(this);
+    }
+
     private void changeLayout(int layout, int btnId) {
         setContentView(layout);
         findViewById(btnId).setOnClickListener(this);
         findViewById(R.id.backHome).setOnClickListener(this);
+    }
+
+    private String getBoxText(int resId) {
+        return ((EditText) findViewById(resId)).getText().toString();
+    }
+
+    private String getPullText(int resId) {
+        return ((Spinner) findViewById(resId)).getSelectedItem().toString();
     }
 
     private static final int[] FUNC_LIST = {
@@ -76,7 +88,7 @@ public class Tester extends Activity implements View.OnClickListener {
                 makeText("この端末はサポートされていません");
                 break;
         }
-        for (int resId: FUNC_LIST) findViewById(resId).setOnClickListener(this);
+        for (int resId: FUNC_LIST) setOnClickListener(resId);
     }
 
     @Override
@@ -89,9 +101,8 @@ public class Tester extends Activity implements View.OnClickListener {
             } else if (resId == R.id.btn_checkPassword) {
                 changeLayout(R.layout.layout_checkpassword, R.id.exec_checkPassword);
             } else if (resId == R.id.exec_checkPassword) {
-                EditText passwordBox = findViewById(R.id.passwordText);
-                String password = passwordBox.getText().toString();
-                makeText("checkPassword：" + BenesseExtension.checkPassword(password));
+                String passwordText = getBoxText(R.id.passwordText);
+                makeText("checkPassword：" + BenesseExtension.checkPassword(passwordText));
             } else if (resId == R.id.btn_checkUsbCam) {
                 makeText("checkUsbCam：" + BenesseExtension.checkUsbCam());
             } else if (resId == R.id.btn_getBaseDisplaySize) {
@@ -103,31 +114,31 @@ public class Tester extends Activity implements View.OnClickListener {
             } else if (resId == R.id.btn_getInt) {
                 changeLayout(R.layout.layout_getint, R.id.exec_getInt);
             } else if (resId == R.id.exec_getInt) {
-                String name = ((Spinner) findViewById(R.id.name_getInt)).getSelectedItem().toString();
-                makeText(((Spinner) findViewById(R.id.name_getInt)).getSelectedItem().toString().isEmpty() ? "値を入力してください" : "getInt：" + BenesseExtension.getInt(name));
+                String name = getPullText(R.id.name_getInt);
+                makeText(name.isEmpty() ? "値を入力してください" : "getInt：" + BenesseExtension.getInt(name));
             } else if (resId == R.id.btn_getLcdSize) {
                 makeText("getLcdSize：" + BenesseExtension.getLcdSize());
             } else if (resId == R.id.btn_getString) {
                 changeLayout(R.layout.layout_getstring, R.id.exec_getString);
             } else if (resId == R.id.exec_getString) {
-                String name = ((Spinner) findViewById(R.id.name_getString)).getSelectedItem().toString();
+                String name = getPullText(R.id.name_getString);
                 makeText(name.isEmpty() ? "値を入力してください" : "getString：" + BenesseExtension.getString(name));
             } else if (resId == R.id.btn_putInt) {
                 changeLayout(R.layout.layout_putint, R.id.exec_putInt);
             } else if (resId == R.id.exec_putInt) {
-                String name = ((Spinner) findViewById(R.id.name_putInt)).getSelectedItem().toString();
-                String value = ((EditText) findViewById(R.id.value_putInt)).getText().toString();
+                String name = getPullText(R.id.name_putInt);
+                String value = getBoxText(R.id.value_putInt);
                 makeText(value.isEmpty() ? "値を入力してください" : "putInt：" + BenesseExtension.putInt(name, Integer.parseInt(value)));
             } else if (resId == R.id.btn_putString) {
                 changeLayout(R.layout.layout_putstring, R.id.exec_putString);
             } else if (resId == R.id.exec_putString) {
-                String name = ((Spinner) findViewById(R.id.name_putString)).getSelectedItem().toString();
-                String value = ((EditText) (findViewById(R.id.value_putString))).getText().toString();
+                String name = getPullText(R.id.name_putString);
+                String value = getBoxText(R.id.value_putString);
                 makeText(value.isEmpty() ? "値を入力してください" : "putString：" + BenesseExtension.putString(name, value));
             } else if (resId == R.id.btn_setDchaState) {
                 changeLayout(R.layout.layout_setdchastate, R.id.setDchaState_0);
                 Arrays.asList(R.id.setDchaState_1, R.id.setDchaState_2, R.id.setDchaState_3)
-                        .forEach(btnId -> findViewById(btnId).setOnClickListener(this));
+                        .forEach(this::setOnClickListener);
             } else if (resId == R.id.setDchaState_0) {
                 BenesseExtension.setDchaState(0);
             } else if (resId == R.id.setDchaState_1) {
@@ -139,8 +150,8 @@ public class Tester extends Activity implements View.OnClickListener {
             } else if (resId == R.id.btn_setForcedDisplaySize) {
                 changeLayout(R.layout.layout_setforceddisplaysize, R.id.exec_setForcedDisplaySize);
             } else if (resId ==R.id.exec_setForcedDisplaySize) {
-                String width = ((EditText) findViewById(R.id.width)).getText().toString();
-                String height = ((EditText) findViewById(R.id.height)).getText().toString();
+                String width = getBoxText(R.id.width);
+                String height = getBoxText(R.id.height);
                 makeText(width.isEmpty() || height.isEmpty() ? "値を入力してください" : "setForcedDisplaySize：" + BenesseExtension.setForcedDisplaySize(Integer.parseInt(width), Integer.parseInt(height)));
             }
         } catch (NoClassDefFoundError ignored) {
