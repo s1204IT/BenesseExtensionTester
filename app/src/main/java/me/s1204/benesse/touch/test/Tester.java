@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.BenesseExtension;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBenesseExtensionService;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +23,8 @@ public class Tester extends Activity implements View.OnClickListener {
     private static final String CT3 = "TAB-A03-BR3";
     private static final String CTX = "TAB-A05-BD";
     private static final String CTZ = "TAB-A05-BA1";
+
+    private IBenesseExtensionService mBenesseExtensionService = null;
 
     private void makeText(String msg) {
         runOnUiThread(() -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
@@ -75,6 +80,11 @@ public class Tester extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            mBenesseExtensionService = IBenesseExtensionService.Stub.asInterface(ServiceManager.getService("benesse_extension"));
+        } catch (RuntimeException ignored) {
+            makeText("Runtime Exception");
+        }
         setContentView(R.layout.layout);
         switch (Build.MODEL) {
             case CT3:
@@ -102,51 +112,51 @@ public class Tester extends Activity implements View.OnClickListener {
                 changeLayout(R.layout.layout_checkpassword, R.id.exec_checkPassword);
             } else if (resId == R.id.exec_checkPassword) {
                 String passwordText = getBoxText(R.id.passwordText);
-                makeText("checkPassword：" + BenesseExtension.checkPassword(passwordText));
+                makeText("checkPassword：" + mBenesseExtensionService.checkPassword(passwordText));
             } else if (resId == R.id.btn_checkUsbCam) {
-                makeText("checkUsbCam：" + BenesseExtension.checkUsbCam());
+                makeText("checkUsbCam：" + mBenesseExtensionService.checkUsbCam());
             } else if (resId == R.id.btn_getBaseDisplaySize) {
                 makeText("getBaseDisplaySize：" + BenesseExtension.getBaseDisplaySize());
             } else if (resId == R.id.btn_getDchaState) {
-                makeText("getDchaState：" + BenesseExtension.getDchaState());
+                makeText("getDchaState：" + mBenesseExtensionService.getDchaState());
             } else if (resId == R.id.btn_getInitialDisplaySize) {
                 makeText("getInitialDisplaySize：" + BenesseExtension.getInitialDisplaySize());
             } else if (resId == R.id.btn_getInt) {
                 changeLayout(R.layout.layout_getint, R.id.exec_getInt);
             } else if (resId == R.id.exec_getInt) {
                 String name = getPullText(R.id.name_getInt);
-                makeText(name.isEmpty() ? "値を入力してください" : "getInt：" + BenesseExtension.getInt(name));
+                makeText(name.isEmpty() ? "値を入力してください" : "getInt：" + mBenesseExtensionService.getInt(name));
             } else if (resId == R.id.btn_getLcdSize) {
                 makeText("getLcdSize：" + BenesseExtension.getLcdSize());
             } else if (resId == R.id.btn_getString) {
                 changeLayout(R.layout.layout_getstring, R.id.exec_getString);
             } else if (resId == R.id.exec_getString) {
                 String name = getPullText(R.id.name_getString);
-                makeText(name.isEmpty() ? "値を入力してください" : "getString：" + BenesseExtension.getString(name));
+                makeText(name.isEmpty() ? "値を入力してください" : "getString：" + mBenesseExtensionService.getString(name));
             } else if (resId == R.id.btn_putInt) {
                 changeLayout(R.layout.layout_putint, R.id.exec_putInt);
             } else if (resId == R.id.exec_putInt) {
                 String name = getPullText(R.id.name_putInt);
                 String value = getBoxText(R.id.value_putInt);
-                makeText(value.isEmpty() ? "値を入力してください" : "putInt：" + BenesseExtension.putInt(name, Integer.parseInt(value)));
+                makeText(value.isEmpty() ? "値を入力してください" : "putInt：" + mBenesseExtensionService.putInt(name, Integer.parseInt(value)));
             } else if (resId == R.id.btn_putString) {
                 changeLayout(R.layout.layout_putstring, R.id.exec_putString);
             } else if (resId == R.id.exec_putString) {
                 String name = getPullText(R.id.name_putString);
                 String value = getBoxText(R.id.value_putString);
-                makeText(value.isEmpty() ? "値を入力してください" : "putString：" + BenesseExtension.putString(name, value));
+                makeText(value.isEmpty() ? "値を入力してください" : "putString：" + mBenesseExtensionService.putString(name, value));
             } else if (resId == R.id.btn_setDchaState) {
                 changeLayout(R.layout.layout_setdchastate, R.id.setDchaState_0);
                 Arrays.asList(R.id.setDchaState_1, R.id.setDchaState_2, R.id.setDchaState_3)
                         .forEach(this::setOnClickListener);
             } else if (resId == R.id.setDchaState_0) {
-                BenesseExtension.setDchaState(0);
+                mBenesseExtensionService.setDchaState(0);
             } else if (resId == R.id.setDchaState_1) {
-                BenesseExtension.setDchaState(1);
+                mBenesseExtensionService.setDchaState(1);
             } else if (resId == R.id.setDchaState_2) {
-                BenesseExtension.setDchaState(2);
+                mBenesseExtensionService.setDchaState(2);
             } else if (resId == R.id.setDchaState_3) {
-                BenesseExtension.setDchaState(3);
+                mBenesseExtensionService.setDchaState(3);
             } else if (resId == R.id.btn_setForcedDisplaySize) {
                 changeLayout(R.layout.layout_setforceddisplaysize, R.id.exec_setForcedDisplaySize);
             } else if (resId ==R.id.exec_setForcedDisplaySize) {
@@ -154,7 +164,9 @@ public class Tester extends Activity implements View.OnClickListener {
                 String height = getBoxText(R.id.height);
                 makeText(width.isEmpty() || height.isEmpty() ? "値を入力してください" : "setForcedDisplaySize：" + BenesseExtension.setForcedDisplaySize(Integer.parseInt(width), Integer.parseInt(height)));
             }
-        } catch (NoClassDefFoundError ignored) {
+        } catch (RemoteException ignored) {
+            makeText("Remote Exception");
+        }  catch (NoClassDefFoundError ignored) {
             makeText("BenesseExtension が存在しません");
             finish();
         } catch (NoSuchMethodError ignored) {

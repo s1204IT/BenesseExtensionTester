@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdk = 24
         targetSdk = 35
-        versionCode = 13
-        versionName = "2.4.1"
+        versionCode = 14
+        versionName = "2.5.0"
         proguardFiles += 'proguard-rules.pro'
         multiDexEnabled = false
     }
@@ -46,4 +46,5 @@ android {
 
 dependencies {
     compileOnly 'com.github.s1204IT:BenesseExtension:1.0.0'
+    compileOnly 'com.github.s1204IT:BenesseExtensionService:1.1.1'
 }
