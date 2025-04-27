@@ -45,6 +45,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.github.s1204IT:BenesseExtension:1.0.0'
-    compileOnly 'com.github.s1204IT:BenesseExtensionService:1.1.1'
+    compileOnly 'me.s1204:BenesseExtension:1.0.0'
+    compileOnly 'me.s1204:BenesseExtensionService:1.0.0'
 }
